@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "959096218297",
+    "firebase_url": "https://faceappjava-default-rtdb.firebaseio.com",
+    "project_id": "faceappjava",
+    "storage_bucket": "faceappjava.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959096218297:android:8ffb32684081755b6ff168",
+        "android_client_info": {
+          "package_name": "com.example.faceappjava"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrijbGSNeHJzZykLgbGJlUi3cIJjVKtDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959096218297:android:463d96d16ef18d426ff168",
+        "android_client_info": {
+          "package_name": "com.example.komatoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrijbGSNeHJzZykLgbGJlUi3cIJjVKtDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
