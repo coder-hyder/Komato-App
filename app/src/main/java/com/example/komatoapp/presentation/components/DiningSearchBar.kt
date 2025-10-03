@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.komatoapp.R
@@ -45,7 +46,7 @@ fun DiningSearchBar(modifier: Modifier = Modifier) {
             .clip(RoundedCornerShape(16.dp))
             .background(Color.White)
             .border(1.dp, Color.Gray, RoundedCornerShape(16.dp))
-            .clickable  {
+            .clickable {
                 // navigate to SearchBarScreen
             },
         verticalAlignment = Alignment.CenterVertically){
@@ -94,4 +95,12 @@ fun DiningSearchBar(modifier: Modifier = Modifier) {
             modifier = Modifier.size(24.dp)
         )
     }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+private fun DinginPreview() {
+    DiningSearchBar()
+
 }
