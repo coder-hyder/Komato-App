@@ -80,7 +80,8 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
 
     // this is for coil
-    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation("io.coil-kt:coil-compose:2.7.0")
+
 
     //this is for pager
     implementation ("com.google.accompanist:accompanist-pager:0.28.0")
