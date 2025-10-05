@@ -9,7 +9,6 @@ sealed class SubNavigation{
     @Serializable
     object MainHomeScreen : SubNavigation()
 
-
 }
 
 sealed class Routes {
