@@ -1,6 +1,7 @@
 package com.example.komatoapp.presentation.components
 
-import android.R
+import com.example.komatoapp.R
+import android.R.attr.contentDescription
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -47,8 +49,9 @@ fun TopAppBarDiningScreen(
                         text = "Home", color  = contentColor,
                         fontSize = 20.sp, fontWeight = FontWeight.Bold
                     )
+
                     Icon(
-                        painter = painterResource(R.drawable.arrow_down_float,),
+                       painterResource(R.drawable.down_arrow),
                         modifier = Modifier.size(30.dp).padding(top = 6.dp),
                         tint = contentColor,
                         contentDescription = "Down Arrow"
@@ -87,4 +90,7 @@ fun TopAppBarDiningScreen(
         scrollBehavior = scrollBehavior,
         modifier = Modifier.fillMaxWidth()
     )
+
+
+
 }
