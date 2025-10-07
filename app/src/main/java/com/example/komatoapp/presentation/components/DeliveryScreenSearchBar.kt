@@ -39,11 +39,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImagePainter.State.Empty.painter
 import com.example.komatoapp.R
 
 @Composable
-fun DeliveryScreenSearchBar(modifier: Modifier = Modifier) {
+fun DeliveryScreenSearchBar(navController: NavController) {
     var query by remember { mutableStateOf("") }
 
     Row(modifier = Modifier

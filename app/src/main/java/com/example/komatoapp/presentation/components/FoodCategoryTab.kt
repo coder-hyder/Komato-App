@@ -30,7 +30,7 @@ import com.example.komatoapp.domain.models.FoodCategory
 fun FoodCategoryTabs(
     modifier: Modifier = Modifier,
     selectedTabIndex:Int,
-    onTabSelected:(Int) -> Int)
+    onTabSelected:(Int) -> Unit)
 {
     val categories = listOf(
         FoodCategory("All", R.drawable.allfood),
