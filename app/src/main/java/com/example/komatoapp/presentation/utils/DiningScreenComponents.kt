@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -54,13 +55,76 @@ fun SearchBarDiningTabScreen() {
 }
 
 @Composable
+fun TrendingSpotCard(
+    imageId : Int,
+    locationName : String
+) {
+
+    Card(
+        modifier = Modifier
+            .width(180.dp)
+            .height(200.dp),
+        shape = RoundedCornerShape(
+            topStart = 150.dp,
+            topEnd = 150.dp,
+            bottomStart = 12.dp,
+            bottomEnd = 12.dp
+        ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 4.dp
+        )
+    ) {
+        Box(modifier = Modifier.fillMaxSize()){
+            Image(
+                painter = painterResource(id = imageId),
+                contentDescription = "Trending Spot",
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(
+                        RoundedCornerShape(
+                            topStart = 150.dp,
+                            topEnd = 150.dp,
+                            bottomStart = 12.dp,
+                            bottomEnd = 12.dp
+                        )
+                    ),
+                contentScale = ContentScale.Crop
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.BottomCenter)
+                    .padding(12.dp)
+            ){
+                Row(modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Absolute.SpaceBetween) {
+
+                    Text(
+                        text = locationName,
+                        color = Color.White,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Medium,
+                        modifier = Modifier
+                            .background(
+                                color = Color.Black.copy(alpha = 0.5f),
+                                shape = RoundedCornerShape(4.dp)
+                            )
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
 fun TrendingSpotsLazyRow() {
     LazyRow (
         contentPadding = PaddingValues(horizontal = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ){
         items(5){index ->
-            RestaurantCard(
+            TrendingSpotCard(
                 imageId = when(index){
                     0 -> R.drawable.restaurant1
                     1 -> R.drawable.restaurant2
@@ -92,7 +156,9 @@ fun EditorChoiceText() {
             letterSpacing = 2.sp,
             fontFamily = FontFamily.SansSerif
         ),
-        modifier = Modifier.padding(vertical = 16.dp).padding(start = 125.dp),
+        modifier = Modifier
+            .padding(vertical = 16.dp)
+            .padding(start = 125.dp),
         textAlign = TextAlign.Center
     )
 }
@@ -215,3 +281,4 @@ fun RestaurantNearCard() {
         }
     }
 }
+
