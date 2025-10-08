@@ -54,8 +54,47 @@ fun SearchBarDiningTabScreen() {
 }
 
 @Composable
+fun TrendingSpotsLazyRow() {
+    LazyRow (
+        contentPadding = PaddingValues(horizontal = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ){
+        items(5){index ->
+            RestaurantCard(
+                imageId = when(index){
+                    0 -> R.drawable.restaurant1
+                    1 -> R.drawable.restaurant2
+                    2 -> R.drawable.restaurant3
+                    3 -> R.drawable.restaurant4
+                    4 -> R.drawable.restaurant5
+                    else -> R.drawable.restaurant6
+                },
+                locationName = when(index){
+                    0 -> "top trending spots"
+                    1 -> "best rooftop places"
+                    2 -> "new places"
+                    3 -> "iftar specials"
+                    4 -> "romantic"
+                    else -> "Trending Spot"
+                })
+        }
+    }
+}
+
+@Composable
 fun EditorChoiceText() {
-    TODO("Not yet implemented")
+    Text(
+        text = "EDITORS CHOICE",
+        style = TextStyle(
+            fontSize =  14.sp,
+            color = Color.Gray,
+            fontWeight = FontWeight.Normal,
+            letterSpacing = 2.sp,
+            fontFamily = FontFamily.SansSerif
+        ),
+        modifier = Modifier.padding(vertical = 16.dp).padding(start = 125.dp),
+        textAlign = TextAlign.Center
+    )
 }
 
 @Composable
