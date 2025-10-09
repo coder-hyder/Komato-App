@@ -32,10 +32,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.komatoapp.R
 
 @Composable
-fun DiningSearchBar(modifier: Modifier = Modifier) {
+fun DiningSearchBar(modifier: Modifier = Modifier,navController: NavController) {
     var query by remember { mutableStateOf("") }
 
     Row(
@@ -98,9 +99,3 @@ fun DiningSearchBar(modifier: Modifier = Modifier) {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-private fun DinginPreview() {
-    DiningSearchBar()
-
-}
