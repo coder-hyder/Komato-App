@@ -1,9 +1,11 @@
 package com.example.komatoapp.presentation.screens
 
+import android.graphics.Paint
 import androidx.collection.mutableIntSetOf
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,6 +15,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,7 +26,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -32,6 +38,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
@@ -39,6 +46,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -236,20 +244,25 @@ fun FinalCheckoutScreen(navController: NavController) {
 @Composable
 fun ProductCard(productName: String, price: String) {
 
-    var quantity by remember { mutableIntSetOf(1) }
+    var quantity by remember { mutableIntStateOf(1) }
 
-    Card(modifier = Modifier.fillMaxWidth()
-        .padding(horizontal = 8.dp, vertical = 16.dp),
-        colors = CardDefaults.cardColors(Color.White)) {
-        // Zomato   Premium card
-        Row(modifier = Modifier
+    Card(
+        modifier = Modifier
             .fillMaxWidth()
-            .background(color = colorResource(R.color.purple_500))
-            .padding(horizontal = 8.dp, vertical = 8.dp)) {
+            .padding(horizontal = 8.dp, vertical = 16.dp),
+        colors = CardDefaults.cardColors(Color.White)
+    ) {
+        // Zomato   Premium card
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(color = colorResource(R.color.purple_500))
+                .padding(horizontal = 8.dp, vertical = 8.dp)
+        ) {
 
             Icon(
                 painterResource(R.drawable.goldicon1),
-                tint= Color.Unspecified,
+                tint = Color.Unspecified,
                 contentDescription = "Gold",
                 modifier = Modifier.size(20.dp)
             )
@@ -270,7 +283,7 @@ fun ProductCard(productName: String, price: String) {
                     fontSize = 12.sp,
                     color = Color.Gray
                 )
-                Row(verticalAlignment = Alignment.CenterVertically){
+                Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         text = "Learn more",
                         fontSize = 14.sp,
@@ -278,7 +291,7 @@ fun ProductCard(productName: String, price: String) {
                     )
                     Icon(
                         painterResource(R.drawable.baseline_arrow_right_24),
-                        tint = colorResource(R.color.purple_500 ),
+                        tint = colorResource(R.color.purple_500),
                         contentDescription = "Learn more"
                     )
                 }
@@ -304,6 +317,207 @@ fun ProductCard(productName: String, price: String) {
             }
         }
         // Product Details
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp, vertical = 8.dp)
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.veg_icon),
+                contentDescription = "veg",
+                tint = Color.Unspecified,
+                modifier = Modifier
+                    .padding(top = 4.dp)
+                    .size(16.dp)
+            )
+            Column(
+                modifier = Modifier.padding(horizontal = 12.dp)
+            ) {
+                Text(
+                    text = productName,
+                    color = Color.Black,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp
+                )
+                Text(
+                    text = price,
+                    fontSize = 14.sp,
+                    color = Color.DarkGray
+                )
+            }
+            Spacer(modifier = Modifier.weight(1f))
+            // Card to handle quantity
+            Column(horizontalAlignment = Alignment.End) {
+                Card(
+                    modifier = Modifier.size(width = 75.dp, height = 26.dp),
+                    colors = CardDefaults.cardColors(colorResource(R.color.purple_500)),
+                    border = BorderStroke(width = 1.dp, colorResource(R.color.purple_500)),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Icon(
+                            painterResource(R.drawable.outline_check_indeterminate_small_24),
+                            modifier = Modifier
+                                .padding(2.dp)
+                                .clickable {
+                                    quantity--
+                                },
+                            tint = colorResource(R.color.purple_500),
+                            contentDescription = null
+                        )
+                        Text(
+                            text = quantity.toString(),
+                            color = Color.Black,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Icon(
+                            painterResource(R.drawable.baseline_add_24),
+                            modifier = Modifier
+                                .padding(2.dp)
+                                .size(18.dp)
+                                .clickable {
+                                    quantity++
+                                },
+                            tint = colorResource(R.color.purple_500),
+                            contentDescription = null
+                        )
+                    }
+                }
+                Text(
+                    text = price,
+                    color = Color.Black,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(2.dp)
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp, vertical = 6.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = "Add more",
+                tint = Color(0xFFE91E63),
+                modifier = Modifier.size(18.dp)
+            )
+            Text(
+                text = "Add items",
+                color = colorResource(R.color.purple_500),
+                fontSize = 14.sp,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.padding(start = 4.dp)
+            )
+        }
+        HorizontalDivider(
+            modifier = Modifier.padding(vertical = 8.dp, horizontal = 8.dp),
+            color = colorResource(R.color.purple_500)
+        )
+
+//        LazyRow of  Product Card
+        LazyRow {
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    OutlinedButton(
+                        onClick = {},
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Black),
+                        border = BorderStroke(1.dp, Color.LightGray),
+                        modifier = Modifier.padding(end = 8.dp)
+                    ) {
+                        Icon(
+                            painterResource(R.drawable.cutlery),
+                            contentDescription = "Cutlery",
+                            tint = Color.Black,
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Text(
+                            text = "Don't send cutlery",
+                            fontSize = 14.sp,
+                            modifier = Modifier.padding(start = 4.dp)
+                        )
+                    }
+                    OutlinedButton(
+                        onClick = {},
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Black),
+                        border = BorderStroke(1.dp, Color.LightGray),
+                    ) {
+                        Icon(
+                            painterResource(R.drawable.notes),
+                            contentDescription = "Note",
+                            tint = Color.Black,
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Text(
+                            text = "Add a note for the restaurant",
+                            fontSize = 14.sp,
+                            modifier = Modifier.padding(start = 4.dp)
+                        )
+                    }
+                }
+            }
+        }
     }
 }
 
+@Composable
+fun CouponCard(modifier: Modifier = Modifier) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        shape = RoundedCornerShape(24.dp)
+
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    painterResource(R.drawable.coupons),
+                    contentDescription = "Coupons",
+                    tint = Color.DarkGray,
+                    modifier = Modifier.size(18.dp)
+                )
+                Text(
+                    text = "View all coupons",
+                    fontSize = 16.sp,
+                    color = Color.Black,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+            Icon(
+                painterResource(R.drawable.arrowright),
+                contentDescription = "View",
+                tint = Color.Gray,
+                modifier = Modifier.size(18.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun AddressAndBillCard(time:String,newPrice:String) {
+    
+}
