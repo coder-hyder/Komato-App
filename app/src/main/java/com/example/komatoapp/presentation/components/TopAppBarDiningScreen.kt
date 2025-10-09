@@ -1,7 +1,6 @@
 package com.example.komatoapp.presentation.components
 
 import com.example.komatoapp.R
-import android.R.attr.contentDescription
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,13 +22,14 @@ import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopAppBarDiningScreen(
     scrollBehavior: TopAppBarScrollBehavior,
+    navController: NavController,
 ) {
     val collapsedFraction = scrollBehavior.state.collapsedFraction
 
