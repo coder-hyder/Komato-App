@@ -30,6 +30,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -60,6 +62,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -519,5 +522,162 @@ fun CouponCard(modifier: Modifier = Modifier) {
 
 @Composable
 fun AddressAndBillCard(time:String,newPrice:String) {
-    
+    // Delivery Information
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp, vertical = 16.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White)
+    ) {
+        // Delivery Time
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp, vertical = 8.dp)
+        ) {
+            Icon(
+                painterResource(R.drawable.timer),
+                contentDescription = "Delivery time",
+                tint = Color.Green,
+                modifier = Modifier.size(16.dp)
+            )
+            Column(modifier  = Modifier
+                .weight(1f)
+                .padding(start = 8.dp)) {
+                Text(
+                    text = "Delivery in $time",
+                    fontSize = 14.sp,
+                    color = Color.DarkGray,
+                    fontWeight = FontWeight.SemiBold
+                )
+                Spacer(modifier = Modifier.height(6.dp))
+                Text(
+                    text = "Want this later? Schedule it",
+                    fontSize = 14.sp,
+                    color = Color.DarkGray,
+                    textDecoration = TextDecoration.Underline
+                )
+            }
+        }
+        HorizontalDivider(modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
+
+        // Delivery Address
+        Row(
+            modifier =  Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row{
+                Icon(
+                    imageVector = Icons.Outlined.Home,
+                    contentDescription = "Home",
+                    tint = Color.DarkGray,
+                    modifier = Modifier.size(18.dp)
+                )
+                Column(
+                    modifier = Modifier
+                        .weight(1f).padding(start = 6.dp)
+                ) {
+                    Text(
+                        text = "Delivery at Home",
+                        fontSize = 14.sp,
+                        color = Color.DarkGray,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
+
+                    Text(
+                        text = "265, Shanti Nagar, Ghaziabad...",
+                        fontSize = 12.sp,
+                        color = Color.Gray
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Add instructions for delivery partner",
+                        fontSize = 14.sp,
+                        color = Color.DarkGray,
+                        textDecoration = TextDecoration.Underline
+                    )
+                }
+                Icon(
+                    painterResource(R.drawable.arrowright),
+                    contentDescription = "Edit",
+                    tint = Color.Gray,
+                    modifier = Modifier.size(18.dp)
+                )
+            }
+        }
+        HorizontalDivider(modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
+
+//        contact information
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.Outlined.Phone,
+                    contentDescription = "Phone",
+                    tint = Color.DarkGray,
+                    modifier = Modifier.size(18.dp)
+                )
+
+                Text(
+                    text = "Himanshu Gaur",
+                    fontSize = 14.sp,
+                    color = Color.DarkGray,
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+                Text(
+                    text = "+91-8872551231",
+                    fontSize = 14.sp,
+                    color = Color.Black,
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+            HorizontalDivider(modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp))
+
+            // Bill Information
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Column {
+                    Row {
+                        Icon(
+                            painter = painterResource(R.drawable.notes),
+                            contentDescription = "Bill",
+                            tint = Color.DarkGray,
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Text(
+                            text = "Total Bill $newPrice",
+                            fontSize = 14.sp,
+                            color = Color.DarkGray,
+                            modifier = Modifier.padding(start = 8.dp)
+                        )
+                    }
+                    Text(
+                        text = "Incl. taxes and charges",
+                        fontSize = 12.sp,
+                        color = Color.Gray,
+                        modifier = Modifier.padding(start = 28.dp)
+                    )
+                }
+                Icon(
+                    painter = painterResource(R.drawable.arrowright),
+                    contentDescription = "View",
+                    tint = Color.Gray,
+                    modifier = Modifier.size(18.dp)
+                )
+            }
+        }
+    }
 }
