@@ -1356,7 +1356,300 @@ fun NinthCard(card: cardItem.NinthCard) {
     }
 }
 
+
+@Composable
+fun TenthCard(card : cardItem.TenCard) {
+
+    Card(
+        modifier = Modifier
+            .padding(
+                start = 10.dp, top = 13.dp, end = 10.dp
+            )
+            .fillMaxWidth()
+            .height(120.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White)
+    ) {
+
+        Column {
+            Row {
+                VerticalDivider(
+                    thickness = 3.dp,
+                    modifier = Modifier
+                        .height(34.dp)
+                        .padding(top = 12.dp)
+                        .clip(shape = RoundedCornerShape(10.dp)),
+                    color = colorResource(R.color.purple_500)
+                )
+
+                Text(
+                    text = "Coupons",
+                    color = Color.Black,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 18.sp,
+                    modifier = Modifier.padding(start = 10.dp, top = 10.dp)
+                )
+            }
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    painterResource(R.drawable.coupons),
+                    contentDescription = "Your ordrr",
+                    modifier = Modifier.padding(start = 5.dp),
+                    tint = Color.LightGray
+                )
+                Text(
+                    text = "Collected coupons",
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(start = 5.dp, top = 10.dp)
+                        .weight(1f)
+                )
+
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "forward arrow",
+                    modifier = Modifier.padding(start = 5.dp, top = 10.dp),
+                    tint = Color.Gray
+                )
+            }
+
+            HorizontalDivider(
+                thickness = 0.5.dp,
+                modifier = Modifier
+                    .padding(start = 53.dp, top = 10.dp)
+                    .weight(0.2f),
+                color = Color.LightGray.copy(alpha = 0.4f)
+            )
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    painterResource(R.drawable.coupons),
+                    contentDescription = "Your ordrr",
+                    modifier = Modifier.padding(start = 5.dp),
+                    tint = Color.LightGray
+                )
+                Text(
+                    text = "Redeem Gold coupons",
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(start = 5.dp, top = 10.dp)
+                        .weight(1f)
+                )
+
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "forward arrow",
+                    modifier = Modifier.padding(start = 5.dp, top = 10.dp),
+                    tint = Color.Gray
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun EleventhCard(card : cardItem.EleventhCard) {
+    Card(
+        modifier = Modifier
+            .padding(
+                start = 10.dp, top = 13.dp, end = 10.dp
+            )
+            .fillMaxWidth()
+            .height(300.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White)
+    ) {
+
+        Column {
+            Row {
+                VerticalDivider(
+                    thickness = 3.dp,
+                    modifier = Modifier
+                        .height(34.dp)
+                        .padding(top = 12.dp)
+                        .clip(shape = RoundedCornerShape(10.dp)),
+                    color = colorResource(R.color.purple_500)
+                )
+
+                Text(
+                    text = "More",
+                    color = Color.Black,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 18.sp,
+                    modifier = Modifier.padding(start = 10.dp, top = 10.dp)
+                )
+            }
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Info,
+                    contentDescription = "Your ordrr",
+                    modifier = Modifier.padding(start = 5.dp, top  = 10.dp),
+                    tint = Color.LightGray
+                )
+                Text(
+                    text = "About",
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(start = 5.dp, top = 10.dp)
+                        .weight(1f)
+                )
+
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "forward arrow",
+                    modifier = Modifier.padding(start = 5.dp, top = 10.dp),
+                    tint = Color.Gray
+                )
+            }
+
+            HorizontalDivider(
+                thickness = 0.5.dp,
+                modifier = Modifier
+                    .padding(start = 53.dp, top = 10.dp)
+                    .weight(0.2f),
+                color = Color.LightGray.copy(alpha = 0.4f)
+            )
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    painterResource(R.drawable.feedback),
+                    contentDescription = "Your ordrr",
+                    modifier = Modifier.padding(start = 5.dp),
+                    tint = Color.LightGray
+                )
+                Text(
+                    text = "Send feedback",
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(start = 5.dp, top = 10.dp)
+                        .weight(1f)
+                )
+
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "forward arrow",
+                    modifier = Modifier.padding(start = 5.dp, top = 10.dp),
+                    tint = Color.Gray
+                )
+            }
+            HorizontalDivider(
+                thickness = 0.5.dp,
+                modifier = Modifier
+                    .padding(start = 53.dp, top = 10.dp)
+                    .weight(0.2f),
+                color = Color.LightGray.copy(alpha = 0.4f)
+            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Info,
+                    contentDescription = "Your ordrr",
+                    modifier = Modifier.padding(start = 5.dp),
+                    tint = Color.LightGray
+                )
+                Text(
+                    text = "Report a safety emergency",
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(start = 5.dp, top = 10.dp)
+                        .weight(1f)
+                )
+
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "forward arrow",
+                    modifier = Modifier.padding(start = 5.dp, top = 10.dp),
+                    tint = Color.Gray
+                )
+            }
+            HorizontalDivider(
+                thickness = 0.5.dp,
+                modifier = Modifier
+                    .padding(start = 53.dp, top = 10.dp)
+                    .weight(0.2f),
+                color = Color.LightGray.copy(alpha = 0.4f)
+            )
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Settings,
+                    contentDescription = "Your ordrr",
+                    modifier = Modifier.padding(start = 5.dp),
+                    tint = Color.LightGray
+                )
+                Text(
+                    text = "Settings",
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(start = 5.dp, top = 10.dp)
+                        .weight(1f)
+                )
+
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "forward arrow",
+                    modifier = Modifier.padding(start = 5.dp, top = 10.dp),
+                    tint = Color.Gray
+                )
+            }
+            HorizontalDivider(
+                thickness = 0.5.dp,
+                modifier = Modifier
+                    .padding(start = 53.dp, top = 10.dp)
+                    .weight(0.2f),
+                color = Color.LightGray.copy(alpha = 0.4f)
+            )
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    painterResource(R.drawable.logout),
+                    contentDescription = "Your ordrr",
+                    modifier = Modifier.padding(start = 5.dp),
+                    tint = Color.LightGray
+                )
+                Text(
+                    text = "Logout",
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(start = 5.dp, top = 10.dp)
+                        .weight(1f)
+                )
+
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "forward arrow",
+                    modifier = Modifier.padding(start = 5.dp, top = 10.dp),
+                    tint = Color.Gray
+                )
+            }
+
+        }
+    }
+    
+}
+
 sealed class cardItem {
+
     data class ColoumnGrid(val name: String) : cardItem()
     data class FirstCard(val Profilename: String, val percentagetext: String) : cardItem()
     data class SecondCard(val vegtext: String) : cardItem()
