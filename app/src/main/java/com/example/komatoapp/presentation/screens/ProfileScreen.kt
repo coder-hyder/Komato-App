@@ -28,6 +28,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -58,6 +59,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.komatoapp.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(navController: NavHostController) {
 
@@ -665,17 +667,21 @@ fun FoodOrderCard(card: cardItem.FifthCard) {
                 )
             }
 
-            HorizontalDivider(thickness = 0.5.dp,
+            HorizontalDivider(
+                thickness = 0.5.dp,
                 modifier = Modifier
                     .padding(start = 53.dp, top = 10.dp)
                     .weight(0.2f),
-                color = Color.LightGray.copy(alpha = 0.4f))
+                color = Color.LightGray.copy(alpha = 0.4f)
+            )
 
 
-            Row(modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 10.dp, vertical = 4.dp),
-                verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 10.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
 
                 // Rating icon need to bee added download
                 Icon(
@@ -695,17 +701,21 @@ fun FoodOrderCard(card: cardItem.FifthCard) {
                 )
             }
 
-            HorizontalDivider(thickness = 0.5.dp,
+            HorizontalDivider(
+                thickness = 0.5.dp,
                 modifier = Modifier
                     .padding(start = 53.dp, top = 10.dp)
                     .weight(0.2f),
-                color = Color.LightGray.copy(alpha = 0.4f))
+                color = Color.LightGray.copy(alpha = 0.4f)
+            )
 
 
-            Row(modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 10.dp, vertical = 4.dp),
-                verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 10.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
 
                 // Rating icon need to bee added download
                 Icon(
@@ -731,7 +741,7 @@ fun FoodOrderCard(card: cardItem.FifthCard) {
 
 
 @Composable
-fun DiningFood(card : cardItem.SixthCard) {
+fun DiningFood(card: cardItem.SixthCard) {
 
 
     Card(
@@ -958,7 +968,7 @@ fun DiningFood(card : cardItem.SixthCard) {
 
 
 @Composable
-fun SeventhCard(card : cardItem.SeventhCard) {
+fun SeventhCard(card: cardItem.SeventhCard) {
 
     Card(
         modifier = Modifier
@@ -1036,10 +1046,12 @@ fun SeventhCard(card : cardItem.SeventhCard) {
                 )
 
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(text = "Get Feeding India receipt", color = Color.Black,
+                Text(
+                    text = "Get Feeding India receipt", color = Color.Black,
                     modifier = Modifier
                         .padding(start = 5.dp, top = 10.dp)
-                        .weight(1f))
+                        .weight(1f)
+                )
                 Spacer(modifier = Modifier.weight(1f))
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
@@ -1047,25 +1059,33 @@ fun SeventhCard(card : cardItem.SeventhCard) {
                     tint = Color.Gray,
                     modifier = Modifier.padding(start = 5.dp, top = 10.dp)
                 )
-        }}
+            }
+        }
     }
 }
 
 @Composable
-fun EightCard(card : cardItem.EighthCard) {
+fun EightCard(card: cardItem.EighthCard) {
 
-    Card(modifier = Modifier.padding(
-        start = 10.dp, top = 13.dp, end = 10.dp
-    ).fillMaxWidth().height(310.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White)){
+    Card(
+        modifier = Modifier
+            .padding(
+                start = 10.dp, top = 13.dp, end = 10.dp
+            )
+            .fillMaxWidth()
+            .height(310.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White)
+    ) {
 
         Column {
             Row {
                 VerticalDivider(
                     thickness = 3.dp,
-                    modifier = Modifier.height(34.dp)
-                        .padding(top = 12.dp).clip(shape = RoundedCornerShape(10.dp)),
-                    color =  colorResource(R.color.purple_500)
+                    modifier = Modifier
+                        .height(34.dp)
+                        .padding(top = 12.dp)
+                        .clip(shape = RoundedCornerShape(10.dp)),
+                    color = colorResource(R.color.purple_500)
                 )
 
                 Text(
@@ -1073,28 +1093,34 @@ fun EightCard(card : cardItem.EighthCard) {
                     color = Color.Black,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 18.sp,
-                    modifier = Modifier.padding(start = 10.dp,top = 10.dp)
+                    modifier = Modifier.padding(start = 10.dp, top = 10.dp)
                 )
             }
 
-            Row(modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Icon(
                     painterResource(R.drawable.rupeesymbol),
                     contentDescription = "Your ordrr",
-                    modifier = Modifier.padding(start = ),
+                    modifier = Modifier.padding(start =),
                     tint = Color.LightGray
                 )
                 Text(
                     text = "Zomato Money",
                     color = Color.Black,
-                    modifier = Modifier.padding(start = 5.dp, top = 10.dp).weight(1f)
+                    modifier = Modifier
+                        .padding(start = 5.dp, top = 10.dp)
+                        .weight(1f)
                 )
 
-                Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     contentDescription = "forward arrow",
                     modifier = Modifier.padding(start = 5.dp, top = 10.dp),
-                        tint = Color.Gray)
+                    tint = Color.Gray
+                )
             }
 
             HorizontalDivider(
@@ -1105,24 +1131,30 @@ fun EightCard(card : cardItem.EighthCard) {
                 color = Color.LightGray.copy(alpha = 0.4f)
             )
 
-            Row(modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Icon(
                     painterResource(R.drawable.giftcard),
                     contentDescription = "Your ordrr",
-                    modifier = Modifier.padding(start = ),
+                    modifier = Modifier.padding(start =),
                     tint = Color.LightGray
                 )
                 Text(
                     text = "Buy Gift Card",
                     color = Color.Black,
-                    modifier = Modifier.padding(start = 5.dp, top = 10.dp).weight(1f)
+                    modifier = Modifier
+                        .padding(start = 5.dp, top = 10.dp)
+                        .weight(1f)
                 )
 
-                Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     contentDescription = "forward arrow",
                     modifier = Modifier.padding(start = 5.dp, top = 10.dp),
-                    tint = Color.Gray)
+                    tint = Color.Gray
+                )
             }
             HorizontalDivider(
                 thickness = 0.5.dp,
@@ -1133,24 +1165,30 @@ fun EightCard(card : cardItem.EighthCard) {
             )
 
         }
-        Row(modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Icon(
                 painterResource(R.drawable.claimgiftcard),
                 contentDescription = "Your ordrr",
-                modifier = Modifier.padding(start = ),
+                modifier = Modifier.padding(start =),
                 tint = Color.LightGray
             )
             Text(
                 text = "Claim Gift Card",
                 color = Color.Black,
-                modifier = Modifier.padding(start = 5.dp, top = 10.dp).weight(1f)
+                modifier = Modifier
+                    .padding(start = 5.dp, top = 10.dp)
+                    .weight(1f)
             )
 
-            Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = "forward arrow",
                 modifier = Modifier.padding(start = 5.dp, top = 10.dp),
-                tint = Color.Gray)
+                tint = Color.Gray
+            )
         }
         HorizontalDivider(
             thickness = 0.5.dp,
@@ -1160,24 +1198,30 @@ fun EightCard(card : cardItem.EighthCard) {
             color = Color.LightGray.copy(alpha = 0.4f)
         )
 
-        Row(modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Icon(
                 painterResource(R.drawable.z),
                 contentDescription = "Your ordrr",
-                modifier = Modifier.padding(start = ),
+                modifier = Modifier.padding(start =),
                 tint = Color.LightGray
             )
             Text(
                 text = "Zomato Credits",
                 color = Color.Black,
-                modifier = Modifier.padding(start = 5.dp, top = 10.dp).weight(1f)
+                modifier = Modifier
+                    .padding(start = 5.dp, top = 10.dp)
+                    .weight(1f)
             )
 
-            Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = "forward arrow",
                 modifier = Modifier.padding(start = 5.dp, top = 10.dp),
-                tint = Color.Gray)
+                tint = Color.Gray
+            )
         }
         HorizontalDivider(
             thickness = 0.5.dp,
@@ -1187,32 +1231,132 @@ fun EightCard(card : cardItem.EighthCard) {
             color = Color.LightGray.copy(alpha = 0.4f)
         )
 
-        Row(modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Icon(
                 painterResource(R.drawable.payment),
                 contentDescription = "Your ordrr",
-                modifier = Modifier.padding(start = ),
+                modifier = Modifier.padding(start =),
                 tint = Color.LightGray
             )
             Text(
                 text = "Payment settings",
                 color = Color.Black,
-                modifier = Modifier.padding(start = 5.dp, top = 10.dp).weight(1f)
+                modifier = Modifier
+                    .padding(start = 5.dp, top = 10.dp)
+                    .weight(1f)
             )
 
-            Icon(imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = "forward arrow",
                 modifier = Modifier.padding(start = 5.dp, top = 10.dp),
-                tint = Color.Gray)
+                tint = Color.Gray
+            )
         }
     }
 }
 
 
+@Composable
+fun NinthCard(card: cardItem.NinthCard) {
+
+    Card(
+        modifier = Modifier
+            .padding(
+                start = 10.dp, top = 13.dp, end = 10.dp
+            )
+            .fillMaxWidth()
+            .height(120.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White)
+    ) {
+
+        Column {
+            Row {
+                VerticalDivider(
+                    thickness = 3.dp,
+                    modifier = Modifier
+                        .height(34.dp)
+                        .padding(top = 12.dp)
+                        .clip(shape = RoundedCornerShape(10.dp)),
+                    color = colorResource(R.color.purple_500)
+                )
+
+                Text(
+                    text = "Zomato For Enterprise",
+                    color = Color.Black,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 18.sp,
+                    modifier = Modifier.padding(start = 10.dp, top = 10.dp)
+                )
+            }
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    painterResource(R.drawable.building),
+                    contentDescription = "Your ordrr",
+                    modifier = Modifier.padding(start =),
+                    tint = Color.LightGray
+                )
+                Text(
+                    text = "For employs",
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(start = 5.dp, top = 10.dp)
+                        .weight(1f)
+                )
+
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "forward arrow",
+                    modifier = Modifier.padding(start = 5.dp, top = 10.dp),
+                    tint = Color.Gray
+                )
+            }
+
+            HorizontalDivider(
+                thickness = 0.5.dp,
+                modifier = Modifier
+                    .padding(start = 53.dp, top = 10.dp)
+                    .weight(0.2f),
+                color = Color.LightGray.copy(alpha = 0.4f)
+            )
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    painterResource(R.drawable.empcard),
+                    contentDescription = "Your ordrr",
+                    modifier = Modifier.padding(start = 5.dp),
+                    tint = Color.LightGray
+                )
+                Text(
+                    text = "For employs",
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(start = 5.dp, top = 10.dp)
+                        .weight(1f)
+                )
+
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "forward arrow",
+                    modifier = Modifier.padding(start = 5.dp, top = 10.dp),
+                    tint = Color.Gray
+                )
+            }
+        }
+    }
+}
 
 sealed class cardItem {
-
     data class ColoumnGrid(val name: String) : cardItem()
     data class FirstCard(val Profilename: String, val percentagetext: String) : cardItem()
     data class SecondCard(val vegtext: String) : cardItem()
