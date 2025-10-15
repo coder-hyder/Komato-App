@@ -1,6 +1,5 @@
 package com.example.komatoapp.presentation.screens
 
-import android.provider.ContactsContract
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,7 +15,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
@@ -27,7 +25,6 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -41,16 +38,12 @@ import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.mutableStateSetOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -208,7 +201,7 @@ fun ZomatoGold() {
 }
 
 @Composable
-fun ColumnGrid(card: cardItem.ColoumnGrid) {
+fun ColumnGrid(card: CardItem.ColoumnGrid) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -299,36 +292,36 @@ fun ColumnGrid(card: cardItem.ColoumnGrid) {
 @Composable
 fun Lazycolumn() {
     val cardList = listOf(
-        cardItem.ColoumnGrid(name = "Ayush"),
-        cardItem.FirstCard(Profilename = "Your Profile", percentagetext = "48%Completed"),
-        cardItem.SecondCard(vegtext = "Veg Mode"),
-        cardItem.ThirdCard(Appearance = "Appearance"),
-        cardItem.FourthCard(rating = "Your rating"),
-        cardItem.FifthCard(Food_Order = "Food Orders"),
-        cardItem.SixthCard(Titilename = "Dining and Experience"),
-        cardItem.SeventhCard(title = "done"),
-        cardItem.EighthCard(Title = "done"),
-        cardItem.NinthCard(Title = "done"),
-        cardItem.TenCard(Title = "done"),
-        cardItem.EleventhCard(Title = "eleventhdone")
+        CardItem.ColoumnGrid(name = "Ayush"),
+        CardItem.FirstCard(Profilename = "Your Profile", percentagetext = "48%Completed"),
+        CardItem.SecondCard(vegtext = "Veg Mode"),
+        CardItem.ThirdCard(Appearance = "Appearance"),
+        CardItem.FourthCard(rating = "Your rating"),
+        CardItem.FifthCard(Food_Order = "Food Orders"),
+        CardItem.SixthCard(Titilename = "Dining and Experience"),
+        CardItem.SeventhCard(title = "done"),
+        CardItem.EighthCard(Title = "done"),
+        CardItem.NinthCard(Title = "done"),
+        CardItem.TenCard(Title = "done"),
+        CardItem.EleventhCard(Title = "eleventhdone")
     )
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(cardList) { item ->
 
             when (item) {
-                is cardItem.ColoumnGrid -> ColumnGrid(item)
-                is cardItem.FirstCard -> ProductCard(item)
-                is cardItem.SecondCard ->  VegModeCard(item)
-                is cardItem.ThirdCard -> AppearanceCard(item)
-                is cardItem.FourthCard -> RatingCard(item)
-                is cardItem.FifthCard -> FoodOrderCard(item)
-                is cardItem.SixthCard -> DiningFood(item)
-                is cardItem.SeventhCard -> SeventhCard(item)
-                is cardItem.EighthCard -> EightCard(item)
-                is cardItem.NinthCard -> NinthCard(item)
-                is cardItem.TenCard -> TenthCard(item)
-                is cardItem.EleventhCard -> (item)
+                is CardItem.ColoumnGrid -> ColumnGrid(item)
+                is CardItem.FirstCard -> ProductCard(item)
+                is CardItem.SecondCard ->  VegModeCard(item)
+                is CardItem.ThirdCard -> AppearanceCard(item)
+                is CardItem.FourthCard -> RatingCard(item)
+                is CardItem.FifthCard -> FoodOrderCard(item)
+                is CardItem.SixthCard -> DiningFood(item)
+                is CardItem.SeventhCard -> SeventhCard(item)
+                is CardItem.EighthCard -> EightCard(item)
+                is CardItem.NinthCard -> NinthCard(item)
+                is CardItem.TenCard -> TenthCard(item)
+                is CardItem.EleventhCard -> (item)
 
             }
         }
@@ -336,7 +329,7 @@ fun Lazycolumn() {
 }
 
 @Composable
-fun ProductCard(card: cardItem.FirstCard) {
+fun ProductCard(card: CardItem.FirstCard) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -380,7 +373,7 @@ fun ProductCard(card: cardItem.FirstCard) {
 }
 
 @Composable
-fun VegModeCard(card: cardItem.SecondCard) {
+fun VegModeCard(card: CardItem.SecondCard) {
     var switch1 by remember { mutableStateOf(false) }
     Card(
         modifier = Modifier
@@ -417,7 +410,7 @@ fun VegModeCard(card: cardItem.SecondCard) {
 }
 
 @Composable
-fun AppearanceCard(card: cardItem.ThirdCard) {
+fun AppearanceCard(card: CardItem.ThirdCard) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -455,7 +448,7 @@ fun AppearanceCard(card: cardItem.ThirdCard) {
 }
 
 @Composable
-fun RatingCard(card: cardItem.FourthCard) {
+fun RatingCard(card: CardItem.FourthCard) {
 
     Card(
         modifier = Modifier
@@ -493,7 +486,7 @@ fun RatingCard(card: cardItem.FourthCard) {
 }
 
 @Composable
-fun FoodOrderCard(card: cardItem.FifthCard) {
+fun FoodOrderCard(card: CardItem.FifthCard) {
 
     Card(
         modifier = Modifier
@@ -753,7 +746,7 @@ fun FoodOrderCard(card: cardItem.FifthCard) {
 
 
 @Composable
-fun DiningFood(card: cardItem.SixthCard) {
+fun DiningFood(card: CardItem.SixthCard) {
 
 
     Card(
@@ -980,7 +973,7 @@ fun DiningFood(card: cardItem.SixthCard) {
 
 
 @Composable
-fun SeventhCard(card: cardItem.SeventhCard) {
+fun SeventhCard(card: CardItem.SeventhCard) {
 
     Card(
         modifier = Modifier
@@ -1077,7 +1070,7 @@ fun SeventhCard(card: cardItem.SeventhCard) {
 }
 
 @Composable
-fun EightCard(card: cardItem.EighthCard) {
+fun EightCard(card: CardItem.EighthCard) {
 
     Card(
         modifier = Modifier
@@ -1116,7 +1109,7 @@ fun EightCard(card: cardItem.EighthCard) {
                 Icon(
                     painterResource(R.drawable.rupeesymbol),
                     contentDescription = "Your ordrr",
-                    modifier = Modifier.padding(start =),
+                    modifier = Modifier.padding(start = 5.dp , top = 10.dp),
                     tint = Color.LightGray
                 )
                 Text(
@@ -1150,7 +1143,7 @@ fun EightCard(card: cardItem.EighthCard) {
                 Icon(
                     painterResource(R.drawable.giftcard),
                     contentDescription = "Your ordrr",
-                    modifier = Modifier.padding(start =),
+                    modifier = Modifier.padding(start = 5.dp , top = 10.dp),
                     tint = Color.LightGray
                 )
                 Text(
@@ -1184,7 +1177,7 @@ fun EightCard(card: cardItem.EighthCard) {
             Icon(
                 painterResource(R.drawable.claimgiftcard),
                 contentDescription = "Your ordrr",
-                modifier = Modifier.padding(start =),
+                modifier = Modifier.padding(start = 5.dp , top = 10.dp),
                 tint = Color.LightGray
             )
             Text(
@@ -1217,7 +1210,7 @@ fun EightCard(card: cardItem.EighthCard) {
             Icon(
                 painterResource(R.drawable.z),
                 contentDescription = "Your ordrr",
-                modifier = Modifier.padding(start =),
+                modifier = Modifier.padding(start = 5.dp , top = 10.dp),
                 tint = Color.LightGray
             )
             Text(
@@ -1250,7 +1243,7 @@ fun EightCard(card: cardItem.EighthCard) {
             Icon(
                 painterResource(R.drawable.payment),
                 contentDescription = "Your ordrr",
-                modifier = Modifier.padding(start =),
+                modifier = Modifier.padding(start = 5.dp , top = 10.dp),
                 tint = Color.LightGray
             )
             Text(
@@ -1273,7 +1266,7 @@ fun EightCard(card: cardItem.EighthCard) {
 
 
 @Composable
-fun NinthCard(card: cardItem.NinthCard) {
+fun NinthCard(card: CardItem.NinthCard) {
 
     Card(
         modifier = Modifier
@@ -1312,7 +1305,7 @@ fun NinthCard(card: cardItem.NinthCard) {
                 Icon(
                     painterResource(R.drawable.building),
                     contentDescription = "Your ordrr",
-                    modifier = Modifier.padding(start =),
+                    modifier = Modifier.padding(start = 5.dp , top = 10.dp),
                     tint = Color.LightGray
                 )
                 Text(
@@ -1370,7 +1363,7 @@ fun NinthCard(card: cardItem.NinthCard) {
 
 
 @Composable
-fun TenthCard(card : cardItem.TenCard) {
+fun TenthCard(card : CardItem.TenCard) {
 
     Card(
         modifier = Modifier
@@ -1466,7 +1459,7 @@ fun TenthCard(card : cardItem.TenCard) {
 }
 
 @Composable
-fun EleventhCard(card : cardItem.EleventhCard) {
+fun EleventhCard(card : CardItem.EleventhCard) {
     Card(
         modifier = Modifier
             .padding(
@@ -1537,7 +1530,7 @@ fun EleventhCard(card : cardItem.EleventhCard) {
             ) {
                 Icon(
                     painterResource(R.drawable.feedback),
-                    contentDescription = "Your ordrr",
+                    contentDescription = "Your order",
                     modifier = Modifier.padding(start = 5.dp),
                     tint = Color.LightGray
                 )
@@ -1660,18 +1653,18 @@ fun EleventhCard(card : cardItem.EleventhCard) {
     
 }
 
-sealed class cardItem {
+sealed class CardItem {
 
-    data class ColoumnGrid(val name: String) : cardItem()
-    data class FirstCard(val Profilename: String, val percentagetext: String) : cardItem()
-    data class SecondCard(val vegtext: String) : cardItem()
-    data class ThirdCard(val Appearance: String) : cardItem()
-    data class FourthCard(val rating: String) : cardItem()
-    data class FifthCard(val Food_Order: String) : cardItem()
-    data class SixthCard(val Titilename: String) : cardItem()
-    data class SeventhCard(val title: String) : cardItem()
-    data class EighthCard(val Title: String) : cardItem()
-    data class NinthCard(val Title: String) : cardItem()
-    data class TenCard(val Title: String) : cardItem()
-    data class EleventhCard(val Title: String) : cardItem()
+    data class ColoumnGrid(val name: String) : CardItem()
+    data class FirstCard(val Profilename: String, val percentagetext: String) : CardItem()
+    data class SecondCard(val vegtext: String) : CardItem()
+    data class ThirdCard(val Appearance: String) : CardItem()
+    data class FourthCard(val rating: String) : CardItem()
+    data class FifthCard(val Food_Order: String) : CardItem()
+    data class SixthCard(val Titilename: String) : CardItem()
+    data class SeventhCard(val title: String) : CardItem()
+    data class EighthCard(val Title: String) : CardItem()
+    data class NinthCard(val Title: String) : CardItem()
+    data class TenCard(val Title: String) : CardItem()
+    data class EleventhCard(val Title: String) : CardItem()
 }
