@@ -21,10 +21,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CardElevation
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -32,11 +34,13 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableStateSetOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -451,16 +455,20 @@ fun RatingCard(card: cardItem.FourthCard) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             // rating icon need to be added download
-            Icon(painter = painterResource(R.drawable.rating),
+            Icon(
+                painter = painterResource(R.drawable.rating),
                 contentDescription = "Rating icon",
                 modifier = Modifier.size(25.dp),
-                tint = Color.LightGray)
+                tint = Color.LightGray
+            )
             Spacer(modifier = Modifier.width(4.dp))
-            Text(text = "Your rating",color = Color.Black)
+            Text(text = "Your rating", color = Color.Black)
             Spacer(modifier = Modifier.weight(1f))
-            Icon(painterResource(R.drawable.startrating),
+            Icon(
+                painterResource(R.drawable.startrating),
                 contentDescription = "Star rating",
-                tint = Color.Unspecified)
+                tint = Color.Unspecified
+            )
 
         }
 
@@ -471,6 +479,244 @@ fun RatingCard(card: cardItem.FourthCard) {
 @Composable
 fun FoodOrderCard(card: cardItem.FifthCard) {
 
+    Card(
+        modifier = Modifier
+            .padding(horizontal = 8.dp, vertical = 10.dp)
+            .fillMaxWidth()
+            .height(400.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White)
+    ) {
+
+        Column {
+            Row {
+                VerticalDivider(
+                    thickness = 3.dp,
+                    modifier = Modifier
+                        .height(34.dp)
+                        .padding(top = 12.dp)
+                        .clip(shape = RoundedCornerShape(10.dp)),
+                    color = colorResource(R.color.purple_500)
+                )
+
+                Text(
+                    text = "Food orders",
+                    color = Color.Black,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 18.sp,
+                    modifier = Modifier.padding(start = 10.dp, top = 10.dp)
+                )
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 10.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+
+                // Rating icon need to bee added download
+                Icon(
+                    painterResource(R.drawable.order),
+                    contentDescription = "Your orders",
+                    modifier = Modifier.size(25.dp),
+                    tint = Color.LightGray
+                )
+
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(text = "Your orders", color = Color.Black)
+                Spacer(modifier = Modifier.weight(1f))
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "Forward arrow",
+                    tint = Color.Gray
+                )
+            }
+            HorizontalDivider(
+                thickness = 0.5.dp,
+                modifier = Modifier
+                    .padding(start = 53.dp, top = 10.dp)
+                    .weight(0.2f),
+                color = Color.LightGray.copy(alpha = 0.4f)
+            )
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 10.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Rating icon need to bee added donwload
+                Icon(
+                    imageVector = Icons.Default.FavoriteBorder,
+                    contentDescription = "Your Profile",
+                    modifier = Modifier.size(25.dp),
+                    tint = Color.LightGray
+                )
+
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(text = "Favorite orders", color = Color.Black)
+                Spacer(modifier = Modifier.weight(1f))
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "Forward arrow",
+                    tint = Color.Gray
+                )
+            }
+            HorizontalDivider(
+                thickness = 0.5.dp,
+                modifier = Modifier
+                    .padding(start = 53.dp, top = 10.dp)
+                    .weight(0.2f),
+                color = Color.LightGray.copy(alpha = 0.4f)
+            )
+
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 10.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+
+                // Rating icon need to bee added download
+                Icon(
+                    painterResource(R.drawable.thumbs),
+                    contentDescription = "Your Profile",
+                    modifier = Modifier.size(25.dp),
+                    tint = Color.LightGray
+                )
+
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(text = "Manage recommendations", color = Color.Black)
+                Spacer(modifier = Modifier.weight(1f))
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "Forward arrow",
+                    tint = Color.Gray
+                )
+
+            }
+            HorizontalDivider(
+                thickness = 0.5.dp,
+                modifier = Modifier
+                    .padding(start = 53.dp, top = 10.dp)
+                    .weight(0.2f),
+                color = Color.LightGray.copy(alpha = 0.4f)
+            )
+
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 10.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+
+                // Rating icon need to bee added download
+                Icon(
+                    painterResource(R.drawable.train),
+                    contentDescription = "Your Profile",
+                    modifier = Modifier.size(25.dp),
+                    tint = Color.LightGray
+                )
+
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(text = "Order on train", color = Color.Black)
+                Spacer(modifier = Modifier.weight(1f))
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "Forward arrow",
+                    tint = Color.Gray
+                )
+
+            }
+            HorizontalDivider(
+                thickness = 0.5.dp,
+                modifier = Modifier
+                    .padding(start = 53.dp, top = 10.dp)
+                    .weight(0.2f),
+                color = Color.LightGray.copy(alpha = 0.4f)
+            )
+
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 10.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+
+                // Rating icon need to bee added download
+                Icon(
+                    painterResource(R.drawable.addressbook),
+                    contentDescription = "Your Profile",
+                    modifier = Modifier.size(25.dp),
+                    tint = Color.LightGray
+                )
+
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(text = "Address book", color = Color.Black)
+                Spacer(modifier = Modifier.weight(1f))
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "Forward arrow",
+                    tint = Color.Gray
+                )
+            }
+
+            HorizontalDivider(thickness = 0.5.dp,
+                modifier = Modifier.padding(start = 53.dp,top = 10.dp).weight(0.2f),
+                color = Color.LightGray.copy(alpha = 0.4f))
+
+
+            Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically) {
+
+                // Rating icon need to bee added download
+                Icon(
+                    painterResource(R.drawable.hiddden),
+                    contentDescription = "Your Profile",
+                    modifier = Modifier.size(25.dp),
+                    tint = Color.LightGray
+                )
+
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(text = "Hidden Restaurants", color = Color.Black)
+                Spacer(modifier = Modifier.weight(1f))
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "Forward arrow",
+                    tint = Color.Gray
+                )
+            }
+
+            HorizontalDivider(thickness = 0.5.dp,
+                modifier = Modifier.padding(start = 53.dp,top = 10.dp).weight(0.2f),
+                color = Color.LightGray.copy(alpha = 0.4f))
+
+
+            Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically) {
+
+                // Rating icon need to bee added download
+                Icon(
+                    painterResource(R.drawable.message),
+                    contentDescription = "Your Profile",
+                    modifier = Modifier.size(25.dp),
+                    tint = Color.LightGray
+                )
+
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(text = "Online ordering help", color = Color.Black)
+                Spacer(modifier = Modifier.weight(1f))
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                    contentDescription = "Forward arrow",
+                    tint = Color.Gray
+                )
+            }
+            Spacer(modifier = Modifier.width(4.dp))
+        }
+    }
 }
 
 
