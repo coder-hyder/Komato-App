@@ -159,6 +159,8 @@ fun ProfileScreen(navController: NavHostController) {
     }
 }
 
+
+
 @Composable
 fun ZomatoGold() {
 
@@ -295,7 +297,7 @@ fun ColumnGrid(card: cardItem.ColoumnGrid) {
 }
 
 @Composable
-fun Lazycoloumm() {
+fun Lazycolumn() {
     val cardList = listOf(
         cardItem.ColoumnGrid(name = "Ayush"),
         cardItem.FirstCard(Profilename = "Your Profile", percentagetext = "48%Completed"),
@@ -317,7 +319,17 @@ fun Lazycoloumm() {
             when (item) {
                 is cardItem.ColoumnGrid -> ColumnGrid(item)
                 is cardItem.FirstCard -> ProductCard(item)
-                is cardItem.SecondCard ->
+                is cardItem.SecondCard ->  VegModeCard(item)
+                is cardItem.ThirdCard -> AppearanceCard(item)
+                is cardItem.FourthCard -> RatingCard(item)
+                is cardItem.FifthCard -> FoodOrderCard(item)
+                is cardItem.SixthCard -> DiningFood(item)
+                is cardItem.SeventhCard -> SeventhCard(item)
+                is cardItem.EighthCard -> EightCard(item)
+                is cardItem.NinthCard -> NinthCard(item)
+                is cardItem.TenCard -> TenthCard(item)
+                is cardItem.EleventhCard -> (item)
+
             }
         }
     }
