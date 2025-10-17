@@ -2,8 +2,10 @@ package com.example.komatoapp.presentation.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Icon
@@ -33,10 +37,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.stylusHoverIcon
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -171,6 +178,71 @@ fun TabItem(modifier: Modifier = Modifier) {
         when(selectedIndex){
             0 -> FoodCategoryList()
             1 -> SearchBarDiningTabScreen()
+        }
+    }
+}
+
+@Composable
+fun FoodCategoryList(modifier: Modifier = Modifier) {
+
+    // Define the food  categories
+    Text(
+        text = "WHAT'S ON YOUR MIND?",
+        style = TextStyle(
+            fontSize = 14.sp,
+            color = Color.Gray,
+            fontWeight = FontWeight.Normal,
+            letterSpacing = 2.sp,
+            fontFamily = FontFamily.SansSerif
+        ),
+        modifier = Modifier.padding(vertical = 8.dp).padding(start =15.dp),
+        textAlign = TextAlign.Center
+    )
+    val foodCategories = listOf(
+        FoodCategory("All",R.drawable.allfood),
+        FoodCategory("Burger",R.drawable.burger),
+        FoodCategory("Pizza",R.drawable.pizza_image),
+        FoodCategory("Sweets",R.drawable.sweets),
+        FoodCategory("Biryani",R.drawable.vegbiryani),
+        FoodCategory("Deserts",R.drawable.ice_cream),
+        FoodCategory("Rolls",R.drawable.chinese),
+        FoodCategory("Pasta",R.drawable.pasta),
+        FoodCategory("Chinese",R.drawable.chinese),
+        FoodCategory("Burger",R.drawable.burger),
+        FoodCategory("Pizza",R.drawable.burger),
+        FoodCategory("Sweets",R.drawable.foodbag),
+        FoodCategory("Biryani",R.drawable.vegbiryani),
+        FoodCategory("Deserts",R.drawable.ice_cream),
+        FoodCategory("Rolls",R.drawable.rolls),
+        FoodCategory("Pasta",R.drawable.pasta),
+        FoodCategory("Sweets",R.drawable.sweets),
+        FoodCategory("Biryani",R.drawable.vegbiryani),
+        FoodCategory("Deserts",R.drawable.ice_cream),
+        FoodCategory("Rolls",R.drawable.rolls),
+        FoodCategory("Pasta",R.drawable.pasta),
+        FoodCategory("Chinese",R.drawable.chinese),
+        FoodCategory("Sweets",R.drawable.sweets),
+    )
+    // state to track selected category
+    var selectedCategoryIndex by remember{mutableIntStateOf(0)}
+
+    // use lazyverticalgird layout  with vertical scrolling
+
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(3) ,// Display 3 items per row
+        modifier = Modifier.fillMaxWidth()
+            .padding(vertical = 8.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(foodCategories.size){index ->
+            val category = foodCategories[index]
+            FoodCategoryItem(
+                category = category,
+                isSelected = index == selectedCategoryIndex,
+                onClick= {selectedCategoryIndex = index}
+            )
         }
     }
 }
