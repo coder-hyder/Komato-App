@@ -17,10 +17,15 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
+import androidx.compose.material3.TabRowDefaults
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -36,7 +41,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.komatoapp.R
+import com.example.komatoapp.domain.models.FoodCategory
 import com.example.komatoapp.domain.models.TabItems
+import com.example.komatoapp.presentation.utils.SearchBarDiningTabScreen
 import com.google.android.play.integrity.internal.f
 
 @Composable
@@ -124,5 +131,46 @@ fun SearchBarScreen(modifier: Modifier = Modifier,navController: NavController) 
 
 @Composable
 fun TabItem(modifier: Modifier = Modifier) {
-    
+
+    val tabItems = listOf<TabItems>(
+        TabItems("Delivery"),
+        TabItems("Dining")
+    )
+
+    var selectedIndex by remember{mutableIntStateOf(0)}
+
+    Column (modifier = Modifier.fillMaxWidth()){
+        TabRow(
+            selectedTabIndex = selectedIndex,
+            containerColor = Color.White,
+            indicator = {tabPosition ->
+                TabRowDefaults.Indicator(
+                    modifier = Modifier.tabIndicatorOffset(tabPosition[selectedIndex]),
+                    color = colorResource(R.color.purple_500)
+                )
+            }
+        ) {
+            tabItems.forEachIndexed { index, items ->
+                Tab(
+                    selected = index == selectedIndex,
+                    selectedContentColor =  colorResource(R.color.purple_500),
+                    unselectedContentColor = Color.Gray,
+                    onClick = {
+                        selectedIndex = index
+                    },
+                    text = {
+                        Text(text = items.title,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 18.sp)
+                    }
+                )
+            }
+        }
+        Spacer(modifier = Modifier.height(30.dp))
+        // Directly show  the  screen  based on selected index
+        when(selectedIndex){
+            0 -> FoodCategoryList()
+            1 -> SearchBarDiningTabScreen()
+        }
+    }
 }
