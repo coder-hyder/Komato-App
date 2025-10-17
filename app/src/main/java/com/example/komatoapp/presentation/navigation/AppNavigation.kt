@@ -235,7 +235,7 @@ fun AppNavigation(
                     }
 
                     composable<Routes.FinalCheckoutScreen> {
-                        FinalCheckoutScreen()
+                        FinalCheckoutScreen(navController)
                     }
 
                     composable<Routes.SearchBarScreen> {
