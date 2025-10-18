@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class KomatoViewMode @Inject constructor(
+class KomatoViewModel @Inject constructor(
     private val createUserCase: CreateUserUseCase,
     private val loginUserUseCase: LoginUserUseCase
 ): ViewModel() {
