@@ -6,11 +6,12 @@ import com.example.komatoapp.domain.models.UserData
 import com.example.komatoapp.domain.repo.Repo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import jakarta.inject.Inject
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
-class RepoImp(val firebaseAuth: FirebaseAuth, val firestore: FirebaseFirestore) : Repo {
+class RepoImp @Inject constructor(val firebaseAuth: FirebaseAuth, val firestore: FirebaseFirestore) : Repo {
 
     override fun registerWithEmailAndPassword(userData: UserData): Flow<ResultState<String>> =
         callbackFlow {
