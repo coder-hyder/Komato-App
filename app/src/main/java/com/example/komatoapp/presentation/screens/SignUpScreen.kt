@@ -1,5 +1,8 @@
 package com.example.komatoapp.presentation.screens
 
+import android.R.attr.singleLine
+import android.R.attr.text
+import android.R.attr.textStyle
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -17,10 +20,18 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.InputTransformation.Companion.keyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,23 +44,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
-import coil.compose.AsyncImagePainter.State.Empty.painter
 import com.example.komatoapp.R
 import com.example.komatoapp.domain.models.UserData
 import com.example.komatoapp.presentation.components.OrComponent
 import com.example.komatoapp.presentation.navigation.Routes
 import com.example.komatoapp.presentation.navigation.SubNavigation
 import com.example.komatoapp.presentation.viewmodel.KomatoViewModel
+
 
 @Composable
 fun SignUpScreen(
@@ -232,8 +248,94 @@ fun SignUpScreen(
             }
         }
 
-
     }
 
 }
 
+@Composable
+fun MyTextField(
+    value :String,
+    onValueChange : (String) -> Unit,
+    placeholderValue:String,
+    painterResource : Painter
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        placeholder = {Text (text = placeholderValue, color = Color.Gray)},
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 16.dp, end = 16.dp),
+        singleLine = true,
+        textStyle = TextStyle(color = Color.Black),
+        shape = RoundedCornerShape(12.dp),
+        colors = OutlinedTextFieldDefaults.colors(
+            unfocusedBorderColor = Color.LightGray,
+            focusedBorderColor = Color.LightGray
+        ),
+        keyboardOptions = KeyboardOptions.Default,
+        leadingIcon = {
+            Icon(
+                painter = painterResource,
+                contentDescription = "Icon",
+                modifier = Modifier.size(20.dp),
+                tint = Color.Gray
+            )
+        }
+    )
+}
+
+@Composable
+fun PasswordTextField(
+    value :String,
+    onValueChange : (String) -> Unit,
+    placeholderValue:String,
+    painterResource: Painter
+) {
+
+    val passwordVisable = remember{mutableStateOf(false)}
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        placeholder = {Text (text = placeholderValue, color = Color.Gray)},
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 16.dp, end = 16.dp),
+        singleLine = true,
+        textStyle = TextStyle(color = Color.Black),
+        shape = RoundedCornerShape(12.dp),
+        colors = OutlinedTextFieldDefaults.colors(
+            unfocusedBorderColor = Color.LightGray,
+            focusedBorderColor = Color.LightGray
+        ),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        leadingIcon = {
+            Icon(
+                painter = painterResource,
+                contentDescription = "Icon",
+                modifier = Modifier.size(20.dp),
+                tint = Color.Gray
+            )
+        },
+        trailingIcon={
+            val iconImage = if(passwordVisable.value){
+                Icons.Filled.Visibility
+            }else{
+                Icons.Filled.VisibilityOff
+            }
+            val description = if(passwordVisable.value){
+                stringResource(id = R.string.hide_password)
+            }else{
+                stringResource(id = R.string.show_password)
+            }
+            IconButton(onClick = {passwordVisable.value = !passwordVisable.value}){
+                Icon(
+                    imageVector = iconImage,
+                    contentDescription = description,
+                    tint = Color.Gray
+                )
+            }
+        },
+        visualTransformation = if(passwordVisable.value) VisualTransformation.None else PasswordVisualTransformation()
+    )
+}
