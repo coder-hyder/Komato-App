@@ -239,7 +239,7 @@ fun AppNavigation(
                     }
 
                     composable<Routes.SearchBarScreen> {
-                        SearchBarScreen()
+                        SearchBarScreen(navController  = navController)
                     }
                 }
             }
