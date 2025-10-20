@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Theme.KomatoSplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#E91E63</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/komato</item>
+        <item name="postSplashScreenTheme">@style/Theme.AppCompat.DayNight</item>
+    </style>
     <style name="Theme.KomatoApp" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
