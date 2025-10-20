@@ -61,6 +61,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.komatoapp.R
 import com.example.komatoapp.domain.models.UserData
+import com.example.komatoapp.presentation.components.CheckboxComponent
 import com.example.komatoapp.presentation.components.OrComponent
 import com.example.komatoapp.presentation.navigation.Routes
 import com.example.komatoapp.presentation.navigation.SubNavigation
@@ -175,7 +176,7 @@ fun SignUpScreen(
                         painterResource(R.drawable.padlock)
                     )
                     Spacer(modifier = Modifier.height(5.dp))
-                    CheckComponent(value = stringResource(id = R.string.term_conditions))
+                    CheckboxComponent(value = stringResource(id = R.string.term_conditions))
                     Spacer(modifier = Modifier.height(20.dp))
                     val context = LocalContext.current
                     Button(
