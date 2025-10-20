@@ -53,11 +53,13 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.komatoapp.R
 import com.example.komatoapp.domain.models.UserData
+import com.example.komatoapp.presentation.components.OrComponent
 import com.example.komatoapp.presentation.navigation.Routes
 import com.example.komatoapp.presentation.navigation.SubNavigation
 import com.example.komatoapp.presentation.viewmodel.KomatoViewModel
@@ -66,7 +68,7 @@ import com.example.komatoapp.presentation.viewmodel.KomatoViewModel
 @Composable
 fun LoginScreen(
     navController: NavController,
-    viewModel: KomatoViewModel
+    viewModel: KomatoViewModel = hiltViewModel()
 ) {
 
     val state = viewModel.loginScreenState.collectAsState()
@@ -187,7 +189,7 @@ fun LoginScreen(
                     .fillMaxWidth()
                     .padding(horizontal = 30.dp, vertical = 10.dp)
                     .height(50.dp),
-                colors = ButtonDefaults.buttonColors(colorResource(id = R.color.addButtonRed)),
+                colors = ButtonDefaults.buttonColors(Color.Red),
                 elevation = ButtonDefaults.buttonElevation(4.dp),
                 shape = RoundedCornerShape(12.dp)) {
 
@@ -206,9 +208,9 @@ fun LoginScreen(
                 Text(text = "Signup",
                     modifier = Modifier.clickable{
                         navController.navigate(Routes.SignUpScreen)
-                    },color = colorResource(R.color.addButtonRed))
+                    },color = Color.Red)
             }
-            orComponent()
+            OrComponent()
             Spacer(modifier = Modifier.height(10.dp))
             Column(modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally) {
