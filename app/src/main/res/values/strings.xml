@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">komato App</string>
+
+    <string name="show_password">Show Password</string>
+    <string name="hide_password">Hide Password</string>
+    <string name="term_conditions">
+    By continuing, you agree to MyApp’s Terms of Service and Privacy Policy.
+</string>
+
 </resources>
